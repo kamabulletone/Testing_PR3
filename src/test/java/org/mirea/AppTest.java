@@ -6,6 +6,7 @@ import org.hamcrest.Matchers;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,6 +34,18 @@ public class AppTest {
 
         Assertions.assertNotNull(connection.get());
         MatcherAssert.assertThat(connection.get(), Matchers.equalTo(doc));
+
+    }
+
+    @Test
+    public void testWordSearch() {
+        String wordToFind = "Крахмал";
+        Element element = Mockito.mock(Element.class);
+
+        Mockito.when(element.text()).thenReturn(wordToFind);
+
+        Assertions.assertNotNull(element.text());
+        MatcherAssert.assertThat(element.text(), Matchers.equalTo(wordToFind));
 
     }
 }
